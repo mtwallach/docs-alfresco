@@ -2,14 +2,6 @@
 title: Overview
 ---
 
-**Alfresco Search Enterprise 3.0** is deployed using the following components:
-
-* Alfresco Content Services 7.1.0, that includes Alfresco ActiveMQ, Alfresco Transform Service and Database
-* Alfresco Elasticsearch Connector 3.0.0
-* Elasticsearch server 7.10, that may be used as a standard managed service or that may be installed with default configuration
-
-> **Note:** The Elasticsearch server does not require any additional software from Alfresco in order to be used by Alfresco Search Enterprise 3.0
-
 Use this information to deploy the Alfresco Elasticsearch Connector.
 
 To use Alfresco Search Enterprise 3.0 is also required to deploy ACS 7.1 and Elasticsearch server 7.10. Details on these deployments are available in [Alfresco Docs](https://docs.alfresco.com/content-services/latest/install/) and [Elasticsearch Docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html){:target="_blank"}.
@@ -31,12 +23,6 @@ Additionally, Alfresco Repository must be configured in order to use Elasticsear
 Use this information to install Alfresco Elasticsearch Connector on the same machine as Alfresco Content Services.
 
 This task assumes you have installed Alfresco Content Services 7.1 or above.
-
-## Prerequisites and supported platforms
-
-* JDK 11 or OpenJDK 11
-* Elasticsearch server 7.10.1
-* Alfresco Content Services 7.1
 
 ## Configuring the Search Enterprise subsystem in Alfresco Repository
 
@@ -233,13 +219,13 @@ cd alfresco-elasticsearch-connector-distribution/docker-compose
 Log in to Quay.io using your credentials:
 
 ```bash
-$ docker login https://quay.io
+docker login https://quay.io
 ```
 
 Deploy Alfresco Content Services. This `docker-compose.yml` file includes the Repository, ADW, Postgres, Transform Service, ActiveMQ, Alfresco Elasticsearch Connector, Elasticsearch, and Kibana.
 
 ```bash
-$ docker-compose up --build --force-recreate
+docker-compose up --build --force-recreate
 ```
 
 This command downloads the images, fetches all the dependencies, creates each container, and then starts the system.
