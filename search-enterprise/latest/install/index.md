@@ -2,9 +2,15 @@
 title: Overview
 ---
 
+Use this information to deploy Search Enterprise 3.0.0. 
 
+Alfresco Search Enterprise consists of the following components:
 
-Use this information to deploy the Alfresco Elasticsearch Connector.
+* Alfresco Elasticsearch Connector 3.0.0
+* Alfresco Content Services 7.1.0, that includes Alfresco ActiveMQ, Alfresco Transform Service, and Database
+* Elasticsearch server 7.10, that may be used as a standard managed service or that may be installed with default configuration. **Note:** The Elasticsearch server does not require any additional software from Alfresco in order to be used by Alfresco Search Enterprise 3.0
+
+ See the prerequsites 
 
 To use Alfresco Search Enterprise 3.0 is also required to deploy ACS 7.1 and Elasticsearch server 7.10. Details on these deployments are available in [Alfresco Docs](https://docs.alfresco.com/content-services/latest/install/) and [Elasticsearch Docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html){:target="_blank"}.
 
