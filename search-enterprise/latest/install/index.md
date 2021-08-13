@@ -2,7 +2,6 @@
 title: Overview
 ---
 
-<<<<<<< Updated upstream
 Use this information to deploy Search Enterprise 3.0.
 
 Search Enterprise consists of the following components:
@@ -12,58 +11,35 @@ Search Enterprise consists of the following components:
 * [Alfresco Elasticsearch Connector 3.0]()
 
 ## Alfresco Content Services 7.1
-=======
-Alfresco Search Enterprise 3.0 is deployed using the following components:
-
-* Alfresco Content Services 7.1. that includes Alfresco ActiveMQ, Alfresco Transform Service and Database
-* Alfresco Elasticsearch Connector 3.0.0
-* Elasticsearch server 7.10, that may be used as a standard managed service or that may be installed with default configuration
-
-> **Note:** The Elasticsearch server does not require any additional software from Alfresco in order to be used by Alfresco Search Enterprise 3.0
-
-Use this information to deploy the Alfresco Elasticsearch Connector.
->>>>>>> Stashed changes
 
 Install [Alfresco Content Services]({% link content-services/latest/install/index.md %}){:target="_blank"}.
-Additionally, Alfresco Repository must be configured in order to use Elasticsearch as a Search Subsystem (named `elasticsearch`).
 
 ## Elasticsearch 7.10
 
-Install [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html){:target="_blank"} using your required method using the default settings.
+Select the Elasticsearch installation type you want to use, for more see [Installing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/install-elasticsearch.html){:target="_blank"}. Alternatively you can use a managed service from [Elasticsearch](https://www.elastic.co/elasticsearch/service) or [Amazon AWS](https://aws.amazon.com/elasticsearch-service/){:target="_blank"}.
 
-Alternatively, a managed service from [Elasticsearch](https://www.elastic.co/elasticsearch/service) or [Amazon AWS](https://aws.amazon.com/elasticsearch-service/){:target="_blank"} can be used.
+Alfresco Repository and Search Enterprise support communication with Elasticsearch using HTTP or HTTPs using Basic Authentication or no authentication.
 
-Alfresco Repository and Alfresco Elasticsearch Connector support communication with Elasticsearch server using HTTP or HTTPs protocol with or without HTTP Basic Authentication.
+**Note:** If you use Docker Compose templates from Alfresco when installing the Elastic Search Connector, the Elasticsearch and Kibana applications are included as default services.
 
-## Alfresco Elastic Search Connector 3.0
+## Alfresco Elasticsearch connector 3.0
 
-You can use JAR files or deploy using Docker images that are packaged in Helm charts, or Docker Compose, to install the Elastic Search Connector.
+You can use JAR files and deploy using Docker images that are packaged in Helm charts or with Docker Compose, to install the Elastic Search Connector.
 
 > **Note** Kubernetes deployment is not supported.
 
-* [Install using JAR](#install-using-jar-distribution-app)
+* [Install using JAR](#install-using-jar)
 * [Install using Docker Compose](#install-using-docker-compose)
-* [Install Elasticsearch server](#install-elasticsearch-server)
-
-> **Note:** Note that standard Elasticsearch 7.10 server is also required. You can use a local Elasticsearch server deployment, or perform a new installation of the product. Additionally, when using Docker Compose templates from Alfresco, the Elasticsearch server and Kibana application are included as default services.
 
 ### Install using JAR
 
 Use this information to install Alfresco Elasticsearch Connector on the same machine as Alfresco Content Services.
 
-This task assumes you have installed Alfresco Content Services 7.1 or above.
-
-## Prerequisites and supported platforms
-
-* JDK 11 or OpenJDK 11
-* Elasticsearch server 7.10.1
-* Alfresco Content Services 7.1
-
 ## Configuring the Search Enterprise subsystem in Alfresco Repository
 
-The activation and configuration of the Search Services subsystem can be done by using either the `TOMCAT_HOME>/shared/classes/alfresco-global.properties` file or the [Repository Admin Web Console](https://docs.alfresco.com/content-services/latest/admin/admin-console/).
+The activation and configuration of the Search Enterprise search subsystem can be done by using either the `TOMCAT_HOME>/shared/classes/alfresco-global.properties` file or the [Repository Admin Web Console]({% link content-services/latest/admin/admin-console %}).
 
-Add the following lines to the configuration file `alfresco-global.properties` to enable Elasticsearch Search subsystem.
+If adjusting the `TOMCAT_HOME>/shared/classes/alfresco-global.properties` properties file add the following lines: to enable Elasticsearch Search subsystem.
 
 ```bash
 # Set the Elasticsearch subsystem
@@ -76,13 +52,16 @@ elasticsearch.baseUrl=/
 
 These configuration properties are used by Alfresco Content Services to talk to Elasticsearch. In the sample above, a plain HTTP connection is configured, but Alfresco Repository also supports communication with Elasticsearch server using Basic Authentication and HTTPs protocol. Details to enable these options are described in the [Configuration]({% link search-services/latest/config/index.md %}) section.
 
-In order to set the configuration properties from the [Repository Admin Web Console](https://docs.alfresco.com/content-services/latest/admin/admin-console/) just choose `Repository Services > Search Service` option and set the properties in that web page.
+If using theIn order to set the configuration properties from the [Repository Admin Web Console](https://docs.alfresco.com/content-services/latest/admin/admin-console/) just choose `Repository Services > Search Service` option and set the properties in that web page.
 
 ![console]({% link search-enterprise/images/alfresco_repo_web_console.png %})
 
 ## Obtaining the Alfresco Elasticsearch Connector JAR applications
 
 Browse to [Alfresco Nexus Internal Group Repositories](https://nexus.alfresco.com/nexus/#view-repositories;internal~browsestorage){:target="_blank"} and download:
+
+FOR EXAMPLE You can download the [alfresco-extension-inspector-1.0.0.jar](https://artifacts.alfresco.com/nexus/service/local/repositories/releases/content/org/alfresco/extension-inspector/alfresco-extension-inspector/1.0.0/alfresco-extension-inspector-1.0.0.jar) file from the Alfresco Nexus repository.
+
 
 * `alfresco-elasticsearch-live-indexing-3.0.0-app.jar` file from `org/alfresco/alfresco-elasticsearch-live-indexing` folder
 
@@ -332,14 +311,3 @@ live-indexing:
 ```
 
 > **Note:** If Elasticsearch server is available on your environment, `elasticsearch` and `kibana` services can be removed from the `docker-compose.yml` provided file. You may adjust the references to `elasticsearch` service in Docker Compose in order to use your Elasticsearch deployment.
-<<<<<<< Updated upstream
-=======
-
-## Install Elasticsearch
-
-Search Enterprise uses a default installation of Elasticsearch 7.10.
-
-Select the Elasticsearch installation type you want to use, for more see [Installing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/install-elasticsearch.html){:target="_blank"}. Alternatively you can use a managed service from [Elasticsearch](https://www.elastic.co/elasticsearch/service) or [Amazon AWS](https://aws.amazon.com/elasticsearch-service/){:target="_blank"}.
-
-Alfresco Repository and Search Enterprise support communication with Elasticsearch using HTTP or HTTPs using Basic Authentication or no authentication.
->>>>>>> Stashed changes
