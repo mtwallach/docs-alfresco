@@ -2,6 +2,7 @@
 title: Overview
 ---
 
+<<<<<<< Updated upstream
 Use this information to deploy Search Enterprise 3.0.
 
 Search Enterprise consists of the following components:
@@ -11,6 +12,17 @@ Search Enterprise consists of the following components:
 * [Alfresco Elasticsearch Connector 3.0]()
 
 ## Alfresco Content Services 7.1
+=======
+Alfresco Search Enterprise 3.0 is deployed using the following components:
+
+* Alfresco Content Services 7.1. that includes Alfresco ActiveMQ, Alfresco Transform Service and Database
+* Alfresco Elasticsearch Connector 3.0.0
+* Elasticsearch server 7.10, that may be used as a standard managed service or that may be installed with default configuration
+
+> **Note:** The Elasticsearch server does not require any additional software from Alfresco in order to be used by Alfresco Search Enterprise 3.0
+
+Use this information to deploy the Alfresco Elasticsearch Connector.
+>>>>>>> Stashed changes
 
 Install [Alfresco Content Services]({% link content-services/latest/install/index.md %}){:target="_blank"}.
 Additionally, Alfresco Repository must be configured in order to use Elasticsearch as a Search Subsystem (named `elasticsearch`).
@@ -40,6 +52,12 @@ You can use JAR files or deploy using Docker images that are packaged in Helm ch
 Use this information to install Alfresco Elasticsearch Connector on the same machine as Alfresco Content Services.
 
 This task assumes you have installed Alfresco Content Services 7.1 or above.
+
+## Prerequisites and supported platforms
+
+* JDK 11 or OpenJDK 11
+* Elasticsearch server 7.10.1
+* Alfresco Content Services 7.1
 
 ## Configuring the Search Enterprise subsystem in Alfresco Repository
 
@@ -236,13 +254,13 @@ cd alfresco-elasticsearch-connector-distribution/docker-compose
 Log in to Quay.io using your credentials:
 
 ```bash
-docker login https://quay.io
+$ docker login https://quay.io
 ```
 
 Deploy Alfresco Content Services. This `docker-compose.yml` file includes the Repository, ADW, Postgres, Transform Service, ActiveMQ, Alfresco Elasticsearch Connector, Elasticsearch, and Kibana.
 
 ```bash
-docker-compose up --build --force-recreate
+$ docker-compose up --build --force-recreate
 ```
 
 This command downloads the images, fetches all the dependencies, creates each container, and then starts the system.
@@ -314,3 +332,14 @@ live-indexing:
 ```
 
 > **Note:** If Elasticsearch server is available on your environment, `elasticsearch` and `kibana` services can be removed from the `docker-compose.yml` provided file. You may adjust the references to `elasticsearch` service in Docker Compose in order to use your Elasticsearch deployment.
+<<<<<<< Updated upstream
+=======
+
+## Install Elasticsearch
+
+Search Enterprise uses a default installation of Elasticsearch 7.10.
+
+Select the Elasticsearch installation type you want to use, for more see [Installing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/install-elasticsearch.html){:target="_blank"}. Alternatively you can use a managed service from [Elasticsearch](https://www.elastic.co/elasticsearch/service) or [Amazon AWS](https://aws.amazon.com/elasticsearch-service/){:target="_blank"}.
+
+Alfresco Repository and Search Enterprise support communication with Elasticsearch using HTTP or HTTPs using Basic Authentication or no authentication.
+>>>>>>> Stashed changes
