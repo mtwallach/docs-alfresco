@@ -20,26 +20,23 @@ Select the Elasticsearch installation type you want to use, for more see [Instal
 
 Alfresco Repository and Search Enterprise support communication with Elasticsearch using HTTP or HTTPs using Basic Authentication or no authentication.
 
-**Note:** If you use Docker Compose templates from Alfresco when installing the Elastic Search Connector, the Elasticsearch and Kibana applications are included as default services.
+**Note:**  The Elasticsearch component is included by default if you use Docker Compose templates from Alfresco.
 
 ## Alfresco Elasticsearch connector 3.0
 
-You can use JAR files and deploy using Docker images that are packaged in Helm charts or with Docker Compose, to install the Elastic Search Connector.
+To install the Elastic Search Connector you can use JAR files, and deploy using Docker images that are packaged in Helm charts or with Docker Compose,
 
-> **Note** Kubernetes deployment is not supported.
-
-* [Install using JAR](#install-using-jar)
-* [Install using Docker Compose](#install-using-docker-compose)
+> **Note:** Kubernetes deployment is not supported.
 
 ### Install using JAR
 
-Use this information to install Alfresco Elasticsearch Connector on the same machine as Alfresco Content Services.
+Install the Elasticsearch Connector on the same machine as Alfresco Content Services.
 
-## Configuring the Search Enterprise subsystem in Alfresco Repository
+#### Configuring the Search Enterprise subsystem in Alfresco Repository
 
-The activation and configuration of the Search Enterprise search subsystem can be done by using either the `TOMCAT_HOME>/shared/classes/alfresco-global.properties` file or the [Repository Admin Web Console]({% link content-services/latest/admin/admin-console %}).
+Before installing the Search Enterprise Connector you must activate and configure the Search Enterprise search subsystem. This can be done by using either the `TOMCAT_HOME>/shared/classes/alfresco-global.properties` file or the [Repository Admin Web Console]({% link content-services/latest/admin/admin-console %}).
 
-If adjusting the `TOMCAT_HOME>/shared/classes/alfresco-global.properties` properties file add the following lines: to enable Elasticsearch Search subsystem.
+If adjusting the `TOMCAT_HOME>/shared/classes/alfresco-global.properties` properties file add the following lines to enable Elasticsearch Search subsystem:
 
 ```bash
 # Set the Elasticsearch subsystem
@@ -61,7 +58,6 @@ If using theIn order to set the configuration properties from the [Repository Ad
 Browse to [Alfresco Nexus Internal Group Repositories](https://nexus.alfresco.com/nexus/#view-repositories;internal~browsestorage){:target="_blank"} and download:
 
 FOR EXAMPLE You can download the [alfresco-extension-inspector-1.0.0.jar](https://artifacts.alfresco.com/nexus/service/local/repositories/releases/content/org/alfresco/extension-inspector/alfresco-extension-inspector/1.0.0/alfresco-extension-inspector-1.0.0.jar) file from the Alfresco Nexus repository.
-
 
 * `alfresco-elasticsearch-live-indexing-3.0.0-app.jar` file from `org/alfresco/alfresco-elasticsearch-live-indexing` folder
 
@@ -171,25 +167,25 @@ java -jar alfresco-elasticsearch-live-indexing-3.0.0-app.jar --server.port=8083
 
 Once every service is up & running, Elasticsearch index should be populated and search queries would work as expected when using an Alfresco UI application like [Alfresco Digital Workspace](https://docs.alfresco.com/adw/concepts/welcome-adw.html) or [Alfresco Content Application](https://github.com/Alfresco/alfresco-content-app){:target="_blank"}.
 
-### Install using Docker Compose
+## Install using Docker Compose
 
 Use this information to quickly start up Alfresco Elasticsearch Connector using Docker Compose. Due to the limited capabilities of Docker Compose, this deployment method is only recommended for development and test environments.
 
 > **Note:** Since we need to use private (Enterprise-only) Docker images from Quay.io, you need credentials to be able to pull those images from Quay.io. Alfresco customers can request their credentials by logging a ticket at [Alfresco Support](https://support.alfresco.com/){:target="_blank"}.
 
-## Prerequisites and supported platforms
+### Prerequisites and supported platforms
 
 * [Docker](https://docs.docker.com/install/) (latest stable version)
   * This allows you to run Docker images and docker-compose on a single computer.
 * [Docker Compose](https://docs.docker.com/compose/install/)
   * Docker Compose is included as part of some Docker installers. If it's not part of your installation, then install it separately after you've installed Docker.
 
-## Deployment using Docker Compose
+### Deployment using Docker Compose
 
 You can perform the Docker Compose deployment using the source code or downloading the zip distribution.
 Please pay attention, the provided Docker Compose file is only for test and development purposes.
 
-## Using source code
+### Using source code
 
 Getting the code using a Git client using SSH:
 
