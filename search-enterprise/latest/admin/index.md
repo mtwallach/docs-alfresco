@@ -2,20 +2,13 @@
 title: Overview
 ---
 
-# Indexing
-
-* [New Repository](#new-repository)
-* [Existing Repository](#existing-repository)
-* [Partial indexing](#partial-indexing)
-  * [By Ids Range](#ids-range)
-  * [By Dates Range](#dates-range)
+## Indexing
 
 ### Pre-Indexing considerations
 
-The Exact term search feature is disabled by default to save index space.
-It's possible to enable it for specific properties and property types in the configuration file: exactTermSearch.properties
+The Exact term search feature is disabled by default to save index space. It's possible to enable it for specific properties and property types in the configuration `exactTermSearch.properties` file.
 
-N.b. Once you have done that you will need to perform a reindex, so it is recommended to enable the exact term feature before you start creating an index.
+> **Important:** You need to perform a reindex after enabling exact term search. It is recommended you enable it before creating an index.
 
 ### Alfresco Elasticsearch Connector
 
@@ -25,7 +18,7 @@ N.b. Once you have done that you will need to perform a reindex, so it is recomm
 
 * *Reindexing*: Indexing the information of a pre-populated Alfresco Repository or catching up with Alfresco Repositories that have missed some ActiveMQ messages is provided by the Reindexing component. Metadata from the Alfresco Repository is retrieved using a direct JDBC connection to the Alfresco Database (nb. currently only PostgreSQL is supported).
 
-> **Note:** Content and Permission reindexing is not ready to be used with Search Enterprise 3.0.0, as is still under development.
+> **Note:** Content and Permission reindexing is not supported.
 
 ## New Repository
 
@@ -48,7 +41,7 @@ o.a.r.w.ElasticsearchRepoEventItemWriter : Total indexed documents:: 845
 o.a.r.listeners.JobLifecycleListener     : Current Status: COMPLETED
 ```
 
-Once the command has completed, metadata from the out-of-the-box Repository nodes will be indexed in the Elasticsearch server. Additionally, the Alfresco Elasticsearch Connector Live Indexer will add any new permissions and content if nodes are created, updated or deleted.
+Once the command has completed, metadata from the out-of-the-box Repository nodes will be indexed in the Elasticsearch server. Additionally, the Alfresco Elasticsearch Connector Live Indexer will add any new permissions and content if any nodes are created, updated or deleted.
 
 ## Existing Repository
 
@@ -99,7 +92,7 @@ java -jar target/alfresco-elasticsearch-reindexing-3.0.0-SNAPSHOT-app.jar \
 The following sample will reindex all the nodes in the Alfresco Repository which have a value for `ALF_TRANSACTION.commit_time_ms` between 202001010000 and 202104180000. Date time values are written in the format `yyyyMMddHHmm`.
 
 ```java
- java -jar target/alfresco-elasticsearch-reindexing-3.0.0-SNAPSHOT-app.jar \
+ java -jar target/alfresco-elasticsearch-reindexing-3.0.0-app.jar \
   --alfresco.reindex.jobName=reindexByDate \
   --alfresco.reindex.pagesize=100 \
   --alfresco.reindex.batchSize=100  \
@@ -121,13 +114,6 @@ The following services are required:
 * Alfresco Elasticsearch Connector includes a Spring Boot application with several indexing services (mediation, metadata and content)
 * Alfresco ActiveMQ is a message-oriented middleware (MOM) sharing messages between Alfresco Content Repository, Alfresco Elasticsearch Connector and Alfresco Transform Service
 * Elasticsearch is a search and analytics engine that stores indexed metadata and content
-
-* [Identifying critical paths](#identifying-critical-paths)
-* [Metadata indexing performance](#metadata-indexing-performance)
-* [Permissions indexing performance](#permissions-indexing-performance)
-* [Content indexing performance](#content-indexing-performance)
-* [Searching performance](#searching-performance)
-* [Reindex using remote partitioning](#reindex-using-remote-partitioning)
 
 ## Identifying critical paths
 
